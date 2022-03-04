@@ -1,0 +1,13 @@
+diff --git a/src/Plugin/views/filter/ViewsYearFilterDate.php b/src/Plugin/views/filter/ViewsYearFilterDate.php
+index 407b55a..617d37a 100644
+--- a/src/Plugin/views/filter/ViewsYearFilterDate.php
++++ b/src/Plugin/views/filter/ViewsYearFilterDate.php
+@@ -49,7 +49,7 @@ class ViewsYearFilterDate extends Date {
+       if (
+         strpos($field, '.changed') !== FALSE ||
+         strpos($field, '.created') !== FALSE ||
+-        strpos($field, '.published_at') !== FALSE
++        strpos($field, '.published_date') !== FALSE
+       ) {
+         $this->query->addWhereExpression($this->options['group'], "YEAR(FROM_UNIXTIME($field)) $this->operator $value");
+       }

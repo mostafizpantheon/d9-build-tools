@@ -1,0 +1,32 @@
+diff --git a/redis.install b/redis.install
+index 173f6b6..f0ef637 100644
+--- a/redis.install
++++ b/redis.install
+@@ -5,6 +5,7 @@
+  * Redis install related functions.
+  */
+ 
++use Drupal\Core\File\FileSystemInterface;
+ use \Drupal\redis\ClientFactory;
+ 
+ /**
+@@ -38,3 +39,19 @@ function redis_requirements($phase) {
+ 
+   return $requirements;
+ }
++
++/**
++ * Implements hook_install().
++ */
++function redis_install() {
++  // Create lock file to indicate the module has been installed.
++  \Drupal::service('file_system')->saveData('Do not delete!', 'public://redis.lock', FileSystemInterface::EXISTS_REPLACE);
++}
++
++/**
++ * Implements hook_uninstall().
++ */
++function redis_uninstall() {
++  // Delete the lock file when the module is uninstalled.
++  \Drupal::service('file_system')->delete('public://redis.lock');
++}

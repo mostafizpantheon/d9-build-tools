@@ -1,0 +1,23 @@
+diff --git a/src/ImageStylesWarmer.php b/src/ImageStylesWarmer.php
+index 4ca17bf5..f9193146 100644
+--- a/src/ImageStylesWarmer.php
++++ b/src/ImageStylesWarmer.php
+@@ -104,7 +104,17 @@ public function doWarmUp(FileInterface $file, array $image_styles) {
+     foreach ($styles as $style) {
+       $derivative_uri = $style->buildUri($image_uri);
+       if (!file_exists($derivative_uri)) {
+-        $style->createDerivative($image_uri, $derivative_uri);
++        try {
++          $style->createDerivative($image_uri, $derivative_uri);
++        }
++        catch (\Throwable $t) {
++          $this->logger->error("Image Style Warmer failed creating '@style' from image '@image'", [
++            '@style' => $derivative_uri,
++            '@image' => $image_uri,
++          ]);
++          $this->preLoadInfo = NULL;
++          return;
++        }
+       }
+     }
+   }

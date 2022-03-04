@@ -1,118 +1,276 @@
 {
-    "name": "pantheon-upstreams\/drupal-project",
-    "description": "Install Drupal 9 with Composer on Pantheon.",
+    "name": "drupal/legacy-project",
+    "description": "Project template for Drupal 8 projects with composer following drupal/drupal layout",
     "type": "project",
-    "license": "MIT",
-    "repositories": [
-        {
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/drupal",
+    "support": {
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+        "chat": "https://www.drupal.org/node/314178"
+    },
+    "repositories": {
+        "drupal": {
             "type": "composer",
-            "url": "https:\/\/packages.drupal.org\/8"
+            "url": "https://packages.drupal.org/8"
         },
-        {
-            "type": "path",
-            "url": "upstream-configuration"
+        "assets": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+
+        "ckeditor/liststyle": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/liststyle",
+                "version": "4.8.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "ckeditor/plugins/liststyle"
+                },
+                "dist": {
+                    "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.8.0.zip",
+                    "type": "zip"
+                }
+            }
         }
-    ],
+    },
     "require": {
+        "ext-json": "*",
+        "ext-zip": "^1.15",
+        "bower-asset/masonry": "^4.2",
+        "ckeditor/liststyle": "4.8.0",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core-composer-scaffold": "^9.2",
-        "drupal/core-recommended": "^9.2",
-        "drush-ops/behat-drush-endpoint": "^9.4",
-        "drush/drush": "^10",
-        "pantheon-systems/drupal-integrations": "^9",
-        "pantheon-upstreams/upstream-configuration": "dev-master"
+        "drupal/admin_toolbar": "^2.4",
+        "drupal/agreement": "^2.0",
+        "drupal/autologout": "^1.3",
+        "drupal/backup_migrate": "^5.0",
+        "drupal/bootstrap4": "^2.1",
+        "drupal/bootstrap4_modal": "^2.0",
+        "drupal/bootstrap_layout_builder": "^1.3",
+        "drupal/bootstrap_styles": "^1.0",
+        "drupal/cancel_button": "^1.2",
+        "drupal/captcha": "^1.2",
+        "drupal/changed_fields": "^3.2",
+        "drupal/chosen": "^3.0",
+        "drupal/ckeditor_liststyle": "^1.4",
+        "drupal/config_ignore": "^2.2",
+        "drupal/config_split": "^1.7",
+        "drupal/core": "^9",
+        "drupal/core-composer-scaffold": "^9",
+        "drupal/core-project-message": "^9",
+        "drupal/core-recommended": "^9",
+        "drupal/core-vendor-hardening": "^8.8",
+        "drupal/csv_serialization": "^2.0",
+        "drupal/cypress": "^2.3",
+        "drupal/date_popup": "^1.1",
+        "drupal/devel": "^4.0",
+        "drupal/diff": "^1.0",
+        "drupal/dropzonejs": "^2.5",
+        "drupal/dynamic_entity_reference": "^1.12",
+        "drupal/elasticsearch_connector": "^7.0@alpha",
+        "drupal/email_registration": "^1.1",
+        "drupal/encrypt": "^3.0",
+        "drupal/environment_indicator": "^4.0",
+        "drupal/externalauth": "^1.3",
+        "drupal/field_encrypt": "^3.0@alpha",
+        "drupal/field_group": "^3.1",
+        "drupal/file_browser": "^1.3",
+        "drupal/forms_steps": "^1.4",
+        "drupal/geolocation": "^3.2",
+        "drupal/google_tag": "^1.4",
+        "drupal/image_widget_crop": "^2.3",
+        "drupal/inline_entity_form": "^1.0@RC",
+        "drupal/key": "^1.14",
+        "drupal/layout_builder_styles": "^1.0@beta",
+        "drupal/lockr": "^4.0",
+        "drupal/login_redirect_per_role": "^1.7",
+        "drupal/masquerade": "^2.0@beta",
+        "drupal/maxlength": "^1.0@RC",
+        "drupal/migrate_plus": "^5.1",
+        "drupal/migrate_source_csv": "^3.4",
+        "drupal/migrate_tools": "^5.0",
+        "drupal/paragraphs": "^1.12",
+        "drupal/pathauto": "^1.8",
+        "drupal/phpspreadsheet": "^2.0",
+        "drupal/printable": "^2.0",
+        "drupal/protected_pages": "^1.2",
+        "drupal/queue_mail": "^1.4",
+        "drupal/queue_ui": "^2.2",
+        "drupal/quick_node_clone": "^1.13",
+        "drupal/real_aes": "^2.3",
+        "drupal/recaptcha": "^3.0",
+        "drupal/recaptcha_v3": "^1.4",
+        "drupal/reroute_email": "^2.0",
+        "drupal/restui": "^1.20",
+        "drupal/role_based_theme_switcher": "^2.0",
+        "drupal/salesforce": "^5.0",
+        "drupal/search_api": "^1.19",
+        "drupal/sendgrid_integration": "^1.7",
+        "drupal/simple_oauth": "^5.0",
+        "drupal/styleguide": "^2.0@beta",
+        "drupal/swiftmailer": "^2.0",
+        "drupal/switch_page_theme": "1.x-dev@dev",
+        "drupal/token": "^1.9",
+        "drupal/token_filter": "^1.2",
+        "drupal/twig_tweak": "^2.9",
+        "drupal/typed_data": "^1.0@alpha",
+        "drupal/ultimate_cron": "^2.0@alpha",
+        "drupal/upgrade_status": "^3.0",
+        "drupal/url_redirect": "^2.62",
+        "drupal/views_bulk_operations": "^3.9",
+        "drush/drush": "^10.0",
+        "npm-asset/chosen-js": "^1.8",
+        "npm-asset/dropzone": "^5.8",
+        "npm-asset/imagesloaded": "^4.1",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "simplesamlphp/simplesamlphp": "1.18.4",
+        "swiftmailer/swiftmailer": "^6.2",
+        "twig/twig": "^2.12.0"
     },
     "require-dev": {
-        "behat/behat": "^3.10",
-        "behat/mink": "^1.9",
-        "behat/mink-extension": "^2.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "behat/behat": "^3.1",
+        "behat/mink": "^1.7",
+        "behat/mink-extension": "^2.2",
         "dmore/behat-chrome-extension": "^1.3",
-        "drupal/coder": "^8.3",
-        "drupal/core-dev": "^9.2",
+        "drupal/coder": "^8.3.1",
         "drupal/drupal-driver": "^2.1",
         "drupal/drupal-extension": "^4.1",
-        "genesis/behat-fail-aid": "^3.7",
-        "jcalderonzumba/mink-phantomjs-driver": "^0.3.3",
-        "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.6"
+        "geerlingguy/drupal-vm": "^6.0",
+        "genesis/behat-fail-aid": "^2.1",
+        "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
+        "mikey179/vfsstream": "^1.2",
+        "phpunit/phpunit": "^6.5",
+        "squizlabs/php_codesniffer": "^3.4.0",
+        "symfony/css-selector": "^2.8"
     },
     "conflict": {
-        "drupal\/drupal": "*"
+        "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload-dev": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "build-assets": [
+            "@prepare-for-pantheon",
+            "composer install --optimize-autoloader --prefer-source"
+        ],
+        "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
+        "unit-test": "echo 'No unit test step defined.'",
+        "lint": "find web/modules/css-selectorcustom web/themes/custom -name '*.php' -exec php -l {} \\;",
+        "code-sniff": [
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom"
+        ],
+
+        "post-drupal-scaffold-cmd": [
+            "rm -rf vendor/simplesamlphp/simplesamlphp/config && ln -sf ../../../private/simplesamlphp/config ./vendor/simplesamlphp/simplesamlphp/config",
+            "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -s ../../../private/simplesamlphp/metadata ./vendor/simplesamlphp/simplesamlphp/metadata",
+            "rm -rf vendor/simplesamlphp/simplesamlphp/cert",
+            "mkdir vendor/simplesamlphp/simplesamlphp/cert && cp private/simplesamlphp/cert/* vendor/simplesamlphp/simplesamlphp/cert"
+        ]
+    },
+
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true,
+        "allow-plugins": {
+            "simplesamlphp/composer-module-installer": true,
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-vendor-hardening": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    },
     "extra": {
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": ".\/web"
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Views file broken handler fix": "https://www.drupal.org/files/issues/2019-08-08/2628230-53.patch"
             },
-            "allowed-packages": [
-                "pantheon-systems\/drupal-integrations"
-            ],
-            "file-mapping": {
-                "[project-root]\/.editorconfig": false,
-                "[project-root]\/pantheon.upstream.yml": false,
-                "[project-root]\/.gitattributes": false
+            "drupal/styleguide": {
+                "Fixes bug when Styleguide is used with Layout Builder": "https://www.drupal.org/files/issues/2020-11-22/3184083-1-styleguide-layout.patch"
+            },
+            "drupal/salesforce": {
+                "Temp Fix for SF Objects error": "https://www.drupal.org/files/issues/2020-08-03/sf_issue.patch"
+            },
+            "drupal/entity_browser": {
+                "Allows automatic submission of uploaded image using Dropzonejs": "https://www.drupal.org/files/issues/2019-09-06/multi_step_selection_with_automatic_select_2853751_14.patch"
             }
         },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./web"
+            }
+        },
+        "installer-types": [
+            "npm-asset",
+            "bower-asset"
+        ],
         "installer-paths": {
-            "web\/core": [
+            "web/core": [
                 "type:drupal-core"
             ],
-            "web\/libraries\/{$name}": [
-                "type:drupal-library"
+            "web/libraries/chosen": [
+                "npm-asset/chosen-js"
             ],
-            "web\/modules\/contrib\/{$name}": [
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ],
+            "web/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "web\/profiles\/contrib\/{$name}": [
+            "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "web\/themes\/contrib\/{$name}": [
+            "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
-            "drush\/Commands\/contrib\/{$name}": [
+            "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "web\/modules\/custom\/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "web\/profiles\/custom\/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "web\/themes\/custom\/{$name}": [
-                "type:drupal-custom-theme"
-            ],
-            "web\/private\/scripts\/quicksilver\/{$name}\/": [
+            "web/private/scripts/quicksilver/{$name}/": [
                 "type:quicksilver-script"
             ]
         },
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal\/core": "-p2"
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white> </>",
+                "<bg=blue;fg=white> Congratulations, youï¿½ve installed the Drupal codebase </>",
+                "<bg=blue;fg=white> from the drupal/legacy-project template! </>",
+                "<bg=blue;fg=white> </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                " * Install the site: https://www.drupal.org/docs/8/install",
+                " * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                " * Get support: https://www.drupal.org/support",
+                " * Get involved with the Drupal community:",
+                " https://www.drupal.org/getting-involved",
+                " * Remove the plugin that prints this message:",
+                " composer remove drupal/core-project-message"
+            ]
         },
-        "build-env": {
-            "export-configuration": "drush config-export --yes"
+        "config": {
+            "optimize-autoloader": true,
+            "preferred-install": "dist",
+            "sort-packages": true,
+            "platform": {
+                "php": "7.4"
+            }
         }
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4"
-        }
-    },
-    "scripts": {
-        "unit-test": "echo 'No unit test step defined.'",
-        "lint": "find web\/modules\/custom web\/themes\/custom -name '*.php' -exec php -l {} \\;",
-        "code-sniff": [
-            ".\/vendor\/bin\/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/modules\/custom",
-            ".\/vendor\/bin\/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/themes\/custom",
-            ".\/vendor\/bin\/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/modules\/custom",
-            ".\/vendor\/bin\/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor .\/web\/themes\/custom"
-        ]
     }
 }

@@ -1,0 +1,23 @@
+diff --git a/src/TwigExtension/ImageUrl.php b/src/TwigExtension/ImageUrl.php
+index 1100c15e..a24fa7c8 100644
+--- a/src/TwigExtension/ImageUrl.php
++++ b/src/TwigExtension/ImageUrl.php
+@@ -61,13 +61,11 @@ public static function ImageUrl($uri, $style) {
+     // If the imageapi_optimize_webp module is installed and the browser
+     // supports webp, return the webp version of the image.
+     if (\Drupal::moduleHandler()->moduleExists('imageapi_optimize_webp')) {
+-      if (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== FALSE) {
+-        $path_parts = pathinfo($uri);
+-        $original_extension = '.' . $path_parts['extension'];
+-        $pos = strrpos($file_url, $original_extension);
+-        if ($pos !== FALSE) {
+-          $file_url = substr_replace($file_url, $original_extension . '.webp', $pos, strlen($original_extension));
+-        }
++      $path_parts = pathinfo($uri);
++      $original_extension = '.' . $path_parts['extension'];
++      $pos = strrpos($file_url, $original_extension);
++      if ($pos !== FALSE) {
++        $file_url = explode('?', substr_replace($file_url, $original_extension . '.webp', $pos, strlen($original_extension)))[0];
+       }
+     }
+
